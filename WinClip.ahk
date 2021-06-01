@@ -188,12 +188,14 @@
       return 0
     ;calculating required data size
     clipSize := 0
-    for fmt, params in objClip
-      clipSize += 8 + params.size
+    for fmt, params in objClip {
+      clipSize += 8 + params.size + 8
+      ;MsgBox, % " " . fmt . " : " . params.size
+    }
     VarSetCapacity( out_data, clipSize, 0 )
     offset := 0
     for fmt, params in objClip
-    {
+    {  
       NumPut( fmt, out_data, offset, "UInt" )
       offset += 4
       NumPut( params.size, out_data, offset, "UInt" )
@@ -604,6 +606,8 @@ SourceURL:%source%
     objFormats[ prefFmt ] := { size : 4 }
     ObjSetCapacity( objFormats[ prefFmt ], "buffer", 4 )
     NumPut( isCut ? 2 : 5, ObjGetAddress( objFormats[ prefFmt ], "buffer" ), 0 "UInt" )
+    ;for index, value in objFormats
+    ; MsgBox, % " " . index " : " . value
     return this._compileClipData( clipData, objFormats )
   }
   
@@ -1021,7 +1025,9 @@ _BITMAPtoDIB_cleanup:
                               ,0x0080 : 0 ;"CF_OWNERDISPLAY"
                               ,3      : 0 ;"CF_METAFILEPICT"
                               ,7      : 0 ;"CF_OEMTEXT"
-                              ,1      : 0 } ;"CF_TEXT"
+                              ,1      : 0 ;"CF_TEXT"
+                              ,49161  : 0 ; UNKNOWN (WIN+SHIFT+S)
+                              ,49171  : 0 } ; UNKNOWN (WIN+SHIFT+S)
                               
   static formatByValue := { 2 : "CF_BITMAP"
                               ,8 : "CF_DIB"
