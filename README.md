@@ -1,4 +1,4 @@
-# OneNote-make-screen-clippings-fit-into-tables
+# OneNote 2016: make screen clippings auto-fit into tables again
 AutoHotKey (AHK) v1.1 script: automatically saves screen captures from Windows+Shift+S to a file and adds the file to the clipboard.
 
 Uses WinClip class: [AHK forum post](https://autohotkey.com/board/topic/74670-class-winclip-direct-clipboard-manipulations/), [Website](https://apathysoftworks.com/ahk/index.html).
