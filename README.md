@@ -11,3 +11,9 @@ Uses WinClip class: [AHK forum post](https://autohotkey.com/board/topic/74670-cl
 3. Run script - you can now use Windows+shift+S to take a screen snip and just paste it into OneNote without messing up your tables! If you haven't changed the options (step 2), you will get a tooltip like this if the script is running: ![](https://raw.githubusercontent.com/Henri-J-Norden/OneNote-make-screen-clippings-fit-into-tables/c25a0dea099c63fad0db209c0814f0f5d3181823/Example%20tooltip.png)
 4. (Optional) To make the script run on Windows startup, create a shortcut to the script in the Startup folder (shell:startup).
 
+
+
+## Links
+[AHK forum post](https://www.autohotkey.com/boards/viewtopic.php?f=6&t=91178)
+
+[Semi-relevant OneNote uservoice issue](https://onenote.uservoice.com/forums/327186-onenote-for-windows/suggestions/17914975-onenote-2016-add-ability-to-fix-table-column-wid)
