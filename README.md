@@ -1,5 +1,5 @@
 # OneNote 2016: make screen clippings auto-fit into tables again
-This script allows screen captures (or any copied image) to be pasted into a OneNote table with automatic resizing enabled - so the image won't mess up your table and the images will scale when the table size is changed!
+This script allows screen captures (or any copied image) to be pasted into a OneNote table with automatic resizing enabled - so the image won't mess up your table and the images will scale when the table size is changed! Alternatively, you could also use this script to paste images from your clipboard into any directory.
 
 ### How does it work?
 AutoHotKey (AHK) v1.1 script: automatically saves screen captures from Windows+Shift+S (or every image copied to the clipboard - see options) to a file and then adds the file path to the clipboard. 
