@@ -9,8 +9,8 @@ global CLEAR_CLIPBOARD := false ; if false then the image data will also be kept
 global ALL_IMAGES := false ; if false then only images from win+shift+s will be saved to a file, 
                           ; if true, then EVERY image copied to clipboard will be saved to a file
 
-global TRIES = 30 ; total number of times to try the winclip functions + 1
-global RETRY_SLEEP = 50 ; ms to sleep after a winclip function fails before retrying
+global TRIES := 30 ; total number of times to try the winclip functions + 1
+global RETRY_SLEEP := 50 ; ms to sleep after a winclip function fails before retrying
 
 
 global SNIPPING
@@ -20,7 +20,7 @@ return
 
 
 ~#+s::
-  SNIPPING = true
+  SNIPPING := true
   return
 
 retry(limit, wait, fcn, args*) {
@@ -31,8 +31,8 @@ retry(limit, wait, fcn, args*) {
 
 ClipChanged(clipType) {
     if ((GetKeyState("Control") || !REQUIRE_CTRL) && clipType == 2 
-      && (ALL_IMAGES && WinClip.HasFormat(WinClip.ClipboardFormats.CF_BITMAP) || SNIPPING )) {
-        SNIPPING = false
+      && (ALL_IMAGES || SNIPPING) && WinClip.HasFormat(WinClip.ClipboardFormats.CF_BITMAP)) {
+        SNIPPING := false
         
         saved := retry(TRIES, RETRY_SLEEP, WinClip.SaveBitmap, WinClip, IMG_PATH, "png")
         
@@ -55,5 +55,7 @@ ClipChanged(clipType) {
         Sleep ((filesSet && saved) ? 1500 : 5000)
         
         ToolTip  ; Turn off the tip.
+    } else if (SNIPPING) {
+      SNIPPING := false;
     }
 }
