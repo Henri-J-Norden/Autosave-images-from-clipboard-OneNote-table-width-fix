@@ -56,6 +56,6 @@ ClipChanged(clipType) {
         
         ToolTip  ; Turn off the tip.
     } else if (SNIPPING) {
-      SNIPPING := false;
+      SNIPPING := false
     }
 }
