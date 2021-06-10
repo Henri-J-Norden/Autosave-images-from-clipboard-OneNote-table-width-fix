@@ -4,6 +4,7 @@
 
 global IMG_PATH := "clipboard.png" ; relative to script location
 global REQUIRE_CTRL := false ; if true, CTRL must be held when snipping for the script to activate
+    ; if false, holding CTRL while the clipboard changes will make the script NOT save the clipboard to a file
 global ENABLE_TOOLTIP := true ; show/hide tooltips
 global CLEAR_CLIPBOARD := false ; if false then the image data will also be kept in the clipboard (in addition to the img file path)
 global ALL_IMAGES := false ; if false then only images from win+shift+s will be saved to a file, 
@@ -30,7 +31,7 @@ retry(limit, wait, fcn, args*) {
 }
 
 ClipChanged(clipType) {
-    if ((GetKeyState("Control") || !REQUIRE_CTRL) && clipType == 2 
+    if ((GetKeyState("Control") == REQUIRE_CTRL) && clipType == 2 
       && (ALL_IMAGES || SNIPPING) && WinClip.HasFormat(WinClip.ClipboardFormats.CF_BITMAP)) {
         SNIPPING := false
         
